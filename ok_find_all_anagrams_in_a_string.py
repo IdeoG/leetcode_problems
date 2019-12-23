@@ -25,8 +25,8 @@ The substring with start index = 0 is "ab", which is an anagram of "ab".
 The substring with start index = 1 is "ba", which is an anagram of "ab".
 The substring with start index = 2 is "ab", which is an anagram of "ab".
 
-Runtime: 108 ms, faster than 82.22% of Python3 online submissions for Find All Anagrams in a String.
-Memory Usage: 13.7 MB, less than 100.00% of Python3 online submissions for Find All Anagrams in a String.
+Runtime: 96 ms, faster than 93.15% of Python3 online submissions for Find All Anagrams in a String.
+Memory Usage: 13.6 MB, less than 100.00% of Python3 online submissions for Find All Anagrams in a String.
 """
 
 from collections import defaultdict
@@ -40,7 +40,7 @@ class Solution:
             1.  Iterate over m - len(p) characters in s and count unique characters
                 1.2.    If unique characters == unique characters in p, then save index
 
-            Note: T~O(m*N)
+            Note: T~O(N+M)
         """
         p_unique_chs_count = defaultdict(int)
         for ch in p:
@@ -48,6 +48,9 @@ class Solution:
 
         m, n = len(p), len(s)
         indexs = []
+
+        if n - m < 0:
+            return indexs
 
         subset = s[:m]
         subset_unique_chs_count = defaultdict(int)
